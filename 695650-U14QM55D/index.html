@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Rolling Game</title>
+</head>
+<body>
+    <h1>Dice Rolling Game</h1>
+    <p>Guess a number from 1 to 6 and place your bet.</p>
+    <p>Only the game owner can invite players.</p>
+
+    <div>
+        <label for="player_address">Player Address:</label>
+        <input type="text" id="player_address" />
+    </div>
+
+    <div>
+        <label for="guess">Guess:</label>
+        <input type="number" id="guess" min="1" max="6" />
+    </div>
+
+    <div>
+        <label for="bet">Bet Amount:</label>
+        <input type="number" id="bet" min="1" />
+    </div>
+
+    <button onclick="joinGame()">Join Game</button>
+
+    <div id="status"></div>
+
+    <style>body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 20px;
+    }
+    
+    h1 {
+        color: #333;
+    }
+    
+    div {
+        margin: 10px 0;
+    }
+    
+    label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    
+    input[type="text"],
+    input[type="number"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+    
+    #status {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    </style>
+
+    <script type="text/javascript">
+        async function joinGame() {
+            const playerAddress = document.getElementById("player_address").value;
+            const guess = parseInt(document.getElementById("guess").value);
+            const bet = parseInt(document.getElementById("bet").value);
+
+            try {
+                const contract = await getContract(); // Implement a function to get the contract instance
+                const operation = await contract.methods.join_game(playerAddress, guess, bet).send();
+                const receipt = await operation.confirmation();
+                document.getElementById("status").innerText = "Transaction successful.";
+            } catch (error) {
+                document.getElementById("status").innerText = "Error: " + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
