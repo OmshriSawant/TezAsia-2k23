@@ -27,7 +27,7 @@ In your **TeamName** folder, make sure to include the below details in the READM
   8. Your PPT link (Make sure to upload the PPT in this folder along with the project)
   9. Your Team Members' Info. - 1) OMSHRI PUNDLIK SAWANT
                                 2) SAMARTH DEEPAK KAMTEKAR
-                                3) NAINA VASHIWALE
+                                3) NAYNA DATTARAM VASHIWALE
 
 ## Step - 5:  Submitting the code: Making a Pull request
 After you have pushed your files and code base,
